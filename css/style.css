@@ -147,6 +147,7 @@ nav a:hover {
 
     .intro-pic img {
         width: 180px;
+	margin: 5vh 0 10vh;
     }
 
     .intro {
