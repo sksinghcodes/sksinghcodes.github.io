@@ -103,10 +103,45 @@ nav a:hover {
     font-size: 40px;
 }
 
+@media (max-width: 1200px) {
+    .intro {
+        font-size: 45px;
+    }
+
+    .greeting {
+        font-size: 30px;
+    }
+
+    .resume-download-button {
+        font-size: 20px;
+    }
+
+    .intro-pic img {
+        width: 250px;
+    }
+}
 
 
+@media (max-width: 900px) {
+    .intro-pic img {
+        width: 200px;
+    }
 
-@media (max-width: 600px) {
+    .greeting {
+        font-size: 20px;
+    }
+
+    .resume-download-button {
+        font-size: 15px;
+    }
+
+    .intro {
+        font-size: 40px;
+    }
+}
+
+
+@media (max-width: 680px) {
     .nav-toggle-button {
         display: inline-block;
     }
