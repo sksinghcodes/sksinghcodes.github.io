@@ -1,1 +1,167 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
 
+.container {
+	max-width: 1440px;
+	margin: auto;
+	padding: 0 5%;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+body {
+    height: 100vh;
+    background-attachment: fixed;
+    background-image: linear-gradient(transparent, #134d6e),
+    				  linear-gradient(90deg, black, #169c75);
+}
+
+nav a,
+.transition {
+	transition: .2s ease-in-out;
+}
+
+.nav-toggle-button {
+    font-size: 25px;
+    color: white;
+    width: 30px;
+    line-height: 30px;
+    text-align: center;
+    display: none;
+    position: relative;
+}
+
+.nav-toggle-button.active {
+    background-color: #fff5;
+}
+
+.flex-box {
+	display: flex;
+}
+
+header {
+    margin-top: 50px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+	width: 110px;
+}
+
+.resume-download-button,
+nav a {
+    font-family: "roboto";
+    color: white;
+    padding: 10px 15px;
+    border-radius: 20px;
+    transition-property: background;
+    font-size: 16px;
+}
+
+.resume-download-button:hover,
+nav a:hover {
+    background: #fff4;
+}
+
+.intro-pic img {
+    width: 300px;
+    border-radius: 200px;
+}
+
+.intro-pic {
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20vh;
+}
+
+.intro {
+    font-size: 65px;
+    color: white;
+    font-family: 'Roboto';
+    font-weight: 900;
+}
+
+.resume-download-button {
+    color: #12aed0;
+    font-size: 22px;
+    position: relative;
+    left: -10px;
+    border-radius: 30px;
+}
+
+.greeting {
+    font-size: 40px;
+}
+
+
+
+
+@media (max-width: 600px) {
+    .nav-toggle-button {
+        display: inline-block;
+    }
+
+    header {
+        margin-top: 25px;
+    }
+
+    .logo {
+        width: 90px;
+    }
+
+    .nav-toggle-button:before {
+        top: 1px;
+        position: relative;
+    }
+
+    nav a {
+        padding: 15px 30px;
+        display: block;
+        border-radius: 0;
+    }
+
+    nav {
+        position: absolute;
+        right: 0;
+        top: 0;
+        background-color: #3a4b59;
+        padding: 80px 0 10px;
+        display: none;
+    }
+
+    .intro-pic {
+        align-items: center;
+        margin-top: 5vh;
+        flex-direction: column;
+    }
+
+    .intro-pic img {
+        width: 180px;
+    }
+
+    .intro {
+        font-size: 30px;
+        margin-top: 5vh;
+        text-align: center;
+    }
+
+    .greeting {
+        font-size: 20px;
+    }
+
+    .name {
+        margin-top: 10px;
+    }
+
+    .resume-download-button {
+        font-size: 18px;
+        left: 0;
+    }
+}
