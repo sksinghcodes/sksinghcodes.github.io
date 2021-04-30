@@ -206,7 +206,7 @@ function sendData() {
     }
     
 
-    ajax.open('POST', '/', true);
+    ajax.open('POST', 'http://localhost:3000/', true);
     ajax.setRequestHeader('Content-Type', 'application/json');
 
     ajax.send(JSON.stringify(formData));
