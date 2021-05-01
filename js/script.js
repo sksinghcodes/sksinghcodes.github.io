@@ -206,7 +206,7 @@ function sendData() {
     }
     
 
-    ajax.open('POST', 'https://cryptic-stream-10041.herokuapp.com/', true);
+    ajax.open('POST', 'https://afternoon-sea-14560.herokuapp.com/', true);
     ajax.setRequestHeader('Content-Type', 'application/json');
     
     console.log(formData);
