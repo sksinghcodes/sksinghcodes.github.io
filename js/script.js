@@ -206,7 +206,7 @@ function sendData() {
     }
     
 
-    ajax.open('POST', 'https://backend-sksinghcodes.vercel.app/', true);
+    ajax.open('POST', 'https://cryptic-stream-10041.herokuapp.com/', true);
     ajax.setRequestHeader('Content-Type', 'application/json');
 
     ajax.send(JSON.stringify(formData));
