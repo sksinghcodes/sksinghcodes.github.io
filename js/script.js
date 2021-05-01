@@ -94,19 +94,6 @@ workList.onscroll = event => {
 	}
 }
 
-// workList.onwheel = event => {
-//     if(event.deltaY > 0 && per >= 0 && per < 100) {
-//         per++;
-        
-//     } else if(event.deltaY < 0 && per <= 100 && per > 0) {
-//         per--;
-//     }
-//     console.log(per);
-//     return false;
-// }
-
-
-
 onmousemove = event => {
     if(mouseDownOnThumb) {
         scrollBarInner.style.width = scrollBarInner.offsetWidth + event.movementX;
@@ -209,15 +196,10 @@ function sendData() {
     ajax.open('POST', 'https://afternoon-sea-14560.herokuapp.com/', true);
     ajax.setRequestHeader('Content-Type', 'application/json');
     
-    console.log(formData);
     ajax.send(JSON.stringify(formData));
 
     ajax.onload = function () {
-		let result;
-		
-		console.log(ajax.readyState);
-		console.log(ajax.status);
-	
+	let result;
 		
         if(ajax.readyState == 4 && ajax.status == 200){
 			result = JSON.parse(ajax.responseText);		
@@ -234,7 +216,6 @@ function sendData() {
 
 		} else {
 			result = "failure";
-			console.log("a");
 		}
     }
 }
