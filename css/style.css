@@ -35,7 +35,6 @@ a {
 .nav-button {
     height: 3.75vw;
     width: 3.75vw;
-    background: white;
     margin: 0.75vw;
 }
 
@@ -265,7 +264,6 @@ h2 {
 .work-list-wrapper {
 	height: 28vw;
 	width: 80vw;
-	overflow: hidden;
 	position: relative;
 }
 
@@ -275,6 +273,27 @@ h2 {
     overflow: auto;
     flex-direction: column;
 	height: 100%;
+	-ms-overflow-style: none;  /* IE and Edge */
+	scrollbar-width: none;  /* Firefox */
+}
+
+.work-list::-webkit-scrollbar {
+	display: none;
+}
+
+.scroll-bar {
+    height: 10px;
+    width: 100%;
+    border: 1px solid #fff;
+	margin-top: 1vw;
+}
+
+.scroll-thumb {
+    height: 4px;
+    width: 100px;
+    background: #fff;
+    margin: 2px;
+	position: relative;
 }
 
 .work-piece {
@@ -288,38 +307,6 @@ h2 {
     flex-direction: column;
 	position: relative;
     right: -3vw;
-}
-
-.scroll-bar {
-    height: 1vw;
-    width: 80vw;
-    margin-top: 2vw;
-    border: 1px solid white;
-	padding: 1px;
-}
-
-.scroll-bar-inner {
-    width: 0%;
-    min-width: 0;
-    max-width: 100%;
-    position: relative;
-    height: 100%;
-}
-
-.scroll-thumb {
-    background: white;
-    height: 100%;
-    width: 50px;
-    position: absolute;
-    right: 0;
-}
-
-.scroll-thumb:active {
-    background: #d2d2d2;
-}
-
-.work-list::-webkit-scrollbar {
-    display: none;
 }
 
 .shadow-right {

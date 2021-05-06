@@ -1,32 +1,79 @@
 var navigation = document.querySelector(".navigation");
 var screens = document.querySelectorAll(".section")
+
 var socialInfo = document.querySelector(".social-info");
+
 var workList = document.querySelector(".work-list");
 var scrollThumb = document.querySelector(".scroll-thumb");
+var scrollBar = document.querySelector(".scroll-bar");
+var workListScrollMax;
+var scrollThumbLeftMax;
+var mouseDownOnScrollThumb = false;
+
 var shadowLeft = document.querySelector(".shadow-left");
 var shadowRight = document.querySelector(".shadow-right");
 var contactForm = document.querySelector(".contact-form form");
 var requestStatusBox = document.querySelector(".request-status-box");
-var shadowInitWidth = shadowRight.offsetWidth;
-var scrollBarInner = scrollThumb.parentElement;
-var scrollBar = scrollThumb.parentElement.parentElement;
-var scrollThumbWidth = Math.floor((workList.offsetWidth * (scrollBar.offsetWidth - 3))/workList.scrollWidth);
-var scrollPercent = (workList.scrollLeft / (workList.scrollWidth - workList.offsetWidth)) * 100;
-var mouseDownOnThumb = false;
-var mouseOverWorkList = false;
 var currentScreen = 0;
 var iniPos = 0;
 var a;
 
-scrollBar.style.paddingLeft = scrollThumbWidth + 1;
-scrollThumb.style.width = scrollThumbWidth;
+scrollThumb.style.width = (scrollBar.scrollWidth - 4) / (workList.scrollWidth / workList.offsetWidth)
+scrollThumbLeftMax = scrollBar.scrollWidth - 4 - scrollThumb.offsetWidth
+workListScrollMax = workList.scrollWidth - workList.offsetWidth
+
+workList.addEventListener('DOMContentLoaded', e => {
+	console.log(e);
+});
+
+scrollThumb.onmousedown = () => {
+	mouseDownOnScrollThumb = true;
+	workList.style.scrollBehavior = 'unset';
+}
+document.onmouseup = () => {
+	mouseDownOnScrollThumb = false;
+	workList.style.scrollBehavior = 'smooth';
+}
+
+document.onmousemove = e => {
+	if(mouseDownOnScrollThumb) {
+		var leftValue = Number(getComputedStyle(scrollThumb).left.slice(0, -2)) + e.movementX;
+		if(leftValue > 0 && leftValue < scrollThumbLeftMax) {
+			scrollThumb.style.left = leftValue;
+		} else if (leftValue < 0) { 
+			scrollThumb.style.left = 0;
+		} else if (leftValue > scrollThumbLeftMax) {
+			scrollThumb.style.left = scrollThumbLeftMax;
+		}
+	}
+
+	workList.scroll((Number(getComputedStyle(scrollThumb).left.slice(0, -2)) * workListScrollMax) / scrollThumbLeftMax, 0)
+}
+
+workList.onscroll = () => {
+	scrollThumb.style.left = Math.ceil((workList.scrollLeft * scrollThumbLeftMax) / workListScrollMax);
+}
+
+
+
+
+
+
 document.documentElement.style.setProperty('--vh', `${visualViewport.height}px`);
 document.documentElement.style.setProperty('--mh', `${visualViewport.height}px`);
 
 // events
 navigation.onclick = event => {
-	if(event.target.classList.contains("nav-button")) {
-		var nthMenu = isNthChild(event.target)
+	if(event.target.classList.contains("nav-button")
+		|| event.target.parentElement.classList.contains("nav-button")
+	) {
+		var nthMenu;
+
+		if(event.target.classList.contains("nav-button")) {
+			nthMenu = isNthChild(event.target)
+		} else if (event.target.parentElement.classList.contains("nav-button")) {
+			nthMenu = isNthChild(event.target.parentElement)
+		}
 
 		scroll(0, screens[nthMenu].offsetTop)
 
@@ -69,58 +116,6 @@ socialInfo.onclick = event => {
 			event.target.nextElementSibling.className = "visible";
 		}
     }
-}
-
-workList.onwheel = event => {	
-    if(event.deltaY > 0) { workList.scrollBy(400, 0); }
-	else if(event.deltaY < 0) { workList.scrollBy(-400, 0) }
-	scrollPercent = (workList.scrollLeft / (workList.scrollWidth - workList.offsetWidth)) * 100;
-	return false;
-}
-
-
-
-workList.onscroll = event => {
-	if(!mouseDownOnThumb && mouseOverWorkList) {
-		scrollBarInner.style.width = String((workList.scrollLeft / (workList.scrollWidth - workList.offsetWidth)) * 100) + "%";
-	}
-	
-	if (workList.scrollLeft < shadowInitWidth) {
-		shadowLeft.style.width = workList.scrollLeft;
-	}
-	
-	if ((workList.scrollWidth - workList.offsetWidth) - workList.scrollLeft < shadowInitWidth) {
-		shadowRight.style.width = (workList.scrollWidth - workList.offsetWidth) - workList.scrollLeft;
-	}
-}
-
-onmousemove = event => {
-    if(mouseDownOnThumb) {
-        scrollBarInner.style.width = scrollBarInner.offsetWidth + event.movementX;
-		if(scrollBarInner.offsetWidth + event.movementX < 0) {
-			scrollBarInner.style.width = 0
-		}
-		workList.scrollLeft = ((scrollBarInner.offsetWidth + event.movementX) * (workList.scrollWidth - workList.offsetWidth)) /(scrollBar.offsetWidth - 2 - scrollThumbWidth)
-    }
-}
-
-scrollThumb.onmousedown = event => {
-	workList.style.scrollBehavior = "unset"
-    mouseDownOnThumb = true;
-	iniPos = event.screenX;
-}
-
-onmouseup = () => {
-	workList.style.scrollBehavior = "smooth"
-    mouseDownOnThumb = false;
-}
-
-workList.onmouseenter = () => {
-	mouseOverWorkList = true;
-}
-
-workList.onmouseleave = () => {
-	mouseOverWorkList = false;
 }
 
 contactForm[2].oninput = () => {
