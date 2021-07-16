@@ -189,7 +189,7 @@ const init = () => {
         }
         
 
-        ajax.open('POST', 'http://localhost:3000/', true);
+        ajax.open('POST', 'https://afternoon-sea-14560.herokuapp.com/', true);
         ajax.setRequestHeader('Content-Type', 'application/json');
         
         ajax.send(JSON.stringify(formData));
