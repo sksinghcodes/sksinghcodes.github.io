@@ -299,7 +299,6 @@ h2 {
 .work-piece {
     background: #fff2;
     height: 28vw;
-    width: 39vw;
     margin-right: 1vw;
 }
 
@@ -389,6 +388,10 @@ h2 {
 
 .skill img.js {
     width: 70%;
+}
+
+.work-piece img {
+    height: 100%;
 }
 
 @media (max-width: 767px) {
@@ -575,5 +578,19 @@ h2 {
         height: 15vw;
         width: 15vw;
         margin: 2vw;
+    }
+
+    .work .container {
+        right: 0;
+    }
+
+    .work-list-wrapper {
+        height: 125vw;
+        width: 90vw;
+    }
+    
+    .work-piece {
+        height: 40vw;
+        margin-bottom: 1vw;
     }
 }
