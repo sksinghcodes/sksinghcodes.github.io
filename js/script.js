@@ -55,14 +55,6 @@ const init = () => {
         scrollThumb.style.left = Math.ceil((workList.scrollLeft * scrollThumbLeftMax) / workListScrollMax);
     }
 
-
-
-
-
-
-    document.documentElement.style.setProperty('--vh', `${visualViewport.height}px`);
-    document.documentElement.style.setProperty('--mh', `${visualViewport.height}px`);
-
     // events
     navigation.onclick = event => {
         if(event.target.classList.contains("nav-button")
@@ -216,3 +208,6 @@ const init = () => {
         }
     }
 }
+
+document.documentElement.style.setProperty('--vh', `${visualViewport.height}px`);
+document.documentElement.style.setProperty('--mh', `${visualViewport.height}px`);
