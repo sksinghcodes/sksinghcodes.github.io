@@ -1,3 +1,4 @@
+console.log(env.THIS_IS_SECRET);
 const init = () => {
     var navigation = document.querySelector(".navigation");
     var screens = document.querySelectorAll(".section")
