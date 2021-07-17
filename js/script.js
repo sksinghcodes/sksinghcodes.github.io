@@ -1,4 +1,4 @@
-const init = () => {
+function init() {
     var navigation = document.querySelector(".navigation");
     var screens = document.querySelectorAll(".section")
 
@@ -19,13 +19,11 @@ const init = () => {
     var iniPos = 0;
     var a;
 
+
     scrollThumb.style.width = (scrollBar.scrollWidth - 4) / (workList.scrollWidth / workList.offsetWidth)
     scrollThumbLeftMax = scrollBar.scrollWidth - 4 - scrollThumb.offsetWidth
     workListScrollMax = workList.scrollWidth - workList.offsetWidth
 
-    workList.addEventListener('DOMContentLoaded', e => {
-        console.log(e);
-    });
 
     scrollThumb.onmousedown = () => {
         mouseDownOnScrollThumb = true;
