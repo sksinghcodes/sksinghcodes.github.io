@@ -24,7 +24,6 @@ function init() {
     scrollThumbLeftMax = scrollBar.scrollWidth - 4 - scrollThumb.offsetWidth
     workListScrollMax = workList.scrollWidth - workList.offsetWidth
 
-
     scrollThumb.onmousedown = () => {
         mouseDownOnScrollThumb = true;
         workList.style.scrollBehavior = 'unset';
@@ -51,6 +50,18 @@ function init() {
 
     workList.onscroll = () => {
         scrollThumb.style.left = Math.ceil((workList.scrollLeft * scrollThumbLeftMax) / workListScrollMax);
+
+        if(workList.scrollLeft > 0){
+            shadowLeft.style.width = '13vw';
+        } else {
+            shadowLeft.style.width = '0';
+        }
+
+        if(workList.scrollLeft < workListScrollMax){
+            shadowRight.style.width = '13vw';
+        } else {
+            shadowRight.style.width = '0';
+        }
     }
 
     // events
