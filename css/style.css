@@ -36,6 +36,7 @@ a {
     height: 3.75vw;
     width: 3.75vw;
     margin: 0.75vw;
+    cursor: pointer;
 }
 
 .nav-button.active {

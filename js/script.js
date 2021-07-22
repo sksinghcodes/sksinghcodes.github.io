@@ -220,3 +220,5 @@ function init() {
 
 document.documentElement.style.setProperty('--vh', `${visualViewport.height}px`);
 document.documentElement.style.setProperty('--mh', `${visualViewport.height}px`);
+
+document.onmousedown = e => e.preventDefault();
