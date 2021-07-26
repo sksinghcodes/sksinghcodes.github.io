@@ -103,7 +103,7 @@ socialInfo.onclick = event => {
                 event.path[2].children[i].children[1].classList.remove("visible");
             }
             
-            document.documentElement.style.setProperty('--left', "-" + event.target.nextElementSibling.offsetWidth - 1);
+            document.documentElement.style.setProperty('--left', `-${event.target.nextElementSibling.offsetWidth + 1}px`);
             event.target.nextElementSibling.className = "visible";
         }
     }
