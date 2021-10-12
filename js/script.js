@@ -2,7 +2,7 @@ var navigation = document.querySelector(".navigation");
 var screens = document.querySelectorAll(".section")
 
 var socialInfo = document.querySelector(".social-info");
-var workDuration = document.querySelector(".work-duration");
+var workDuration = document.querySelector(".workDuration");
 var workList = document.querySelector(".work-list");
 var scrollThumb = document.querySelector(".scroll-thumb");
 var scrollBar = document.querySelector(".scroll-bar");
