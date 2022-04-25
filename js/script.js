@@ -2,7 +2,7 @@ var navigation = document.querySelector(".navigation");
 var screens = document.querySelectorAll(".section")
 
 var socialInfo = document.querySelector(".social-info");
-
+var workDuration = document.querySelector(".workDuration");
 var workList = document.querySelector(".work-list");
 var scrollThumb = document.querySelector(".scroll-thumb");
 var scrollBar = document.querySelector(".scroll-bar");
@@ -17,6 +17,8 @@ var requestStatusBox = document.querySelector(".request-status-box");
 var currentScreen = 0;
 var iniPos = 0;
 var a;
+
+workDuration.textContent = getDuration1((new Date() - new Date('2020/09/23')) / (1000 * 60 * 60 * 24 * 30))
 
 document.body.onload = () => {
     scrollThumb.style.width = `${(scrollBar.scrollWidth - 4) / (workList.scrollWidth / workList.offsetWidth)}px`;
@@ -216,6 +218,21 @@ function sendData() {
             result = "failure";
         }
     }
+}
+
+function getDuration1(durInMonths){
+    let returnString = '';
+
+    if(durInMonths >= 12) {
+        let yearsString = `${Math.floor(durInMonths / 12)} ${Math.floor(durInMonths / 12) < 2 ? 'Year' : 'Years'}`;
+        returnString += yearsString
+    }
+
+    if(durInMonths % 12 >= 1) {
+        returnString += `${returnString ? ' and ' : ''}${Math.floor(durInMonths % 12)} ${Math.floor(durInMonths % 12) < 2 ? 'Month' : 'Months'}`;
+    }
+    
+    return returnString;
 }
 
 document.documentElement.style.setProperty('--vh', `${visualViewport.height}px`);
