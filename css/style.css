@@ -170,7 +170,7 @@ p {
 }
 
 .mb {
-		display: none;
+	display: none;
 }
 	
 .mb-00p .mb-00c,
@@ -395,6 +395,29 @@ h2 {
 
 .work-piece img {
     height: 100%;
+}
+
+.submit-wrap {
+    display: inline-block;
+    position: relative;
+}
+
+.loader {
+    border: .4vw solid #f3f3f3;
+    border-top: .4vw solid #3498db;
+    border-radius: 50%;
+    width: 2.5vw;
+    height: 2.5vw;
+    animation: spin 1s linear infinite;
+    position: absolute;
+    left: calc(100% + 1vw);
+    top: 13%;
+    display: none;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 @media (max-width: 767px) {

@@ -14,6 +14,7 @@ var shadowLeft = document.querySelector(".shadow-left");
 var shadowRight = document.querySelector(".shadow-right");
 var contactForm = document.querySelector(".contact-form form");
 var requestStatusBox = document.querySelector(".request-status-box");
+var loader = document.querySelector(".loader");
 var currentScreen = 0;
 var iniPos = 0;
 var a;
@@ -198,9 +199,11 @@ function sendData() {
     
     ajax.send(JSON.stringify(formData));
 
+    loader.style.display = 'block';
+
     ajax.onload = function () {
     let result;
-        
+    
         if(ajax.readyState == 4 && ajax.status == 200){
             result = JSON.parse(ajax.responseText);		
             
@@ -214,8 +217,10 @@ function sendData() {
                 requestStatusBox.classList.remove(result.message);
             }, 2500);
 
+            loader.style.display = 'none';
         } else {
             result = "failure";
+            loader.style.display = 'none';
         }
     }
 }
