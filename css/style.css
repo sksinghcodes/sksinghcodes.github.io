@@ -3,7 +3,7 @@
 	padding: 0;
 	scroll-behavior: smooth;
 	box-sizing: border-box;
-	font-family: 'Josefin Sans';
+	font-family: 'Roboto Condensed', sans-serif;
 	outline: none;
 }
 
@@ -85,21 +85,15 @@ p {
 	margin-right: 8.4vw;
 }
 
-.hi {
+.line-1 {
 	font-size: 4vw;
 	display: block;
 	padding-left: .1vw;
 	margin-bottom: 0.2vw;
 }
 
-.i-am, .sk-singh {
-	font-size: 5vw;
-}
-
-.i-make {
-	font-size: 3.35vw;
-	display: block;
-	padding-left: .2vw;
+.line-2 {
+	font-size: 2vw;
 }
 
 .contact-form form {
@@ -465,22 +459,17 @@ h2 {
 		text-align: center;
 	}
 
-	.hi, .i-am {
-		font-size: 6.5vw;
+	.line-1 {
+		font-size: 8vw;
 		display: inline;
 		margin-bottom: 0;
 	}
 
-	.sk-singh {
-		font-size: 14.25vw;
+	.line-2 {
+		font-size: 5vw;
 		display: block;
 		margin: 1vw 0 .5vw;
 	}
-
-	.i-make {
-		font-size: 8vw;
-	}
-
 	
 	.contact-form form {
 		width: 85vw;

@@ -21,51 +21,6 @@ var a;
 
 workDuration.textContent = getDuration1((new Date() - new Date('2020/09/23')) / (1000 * 60 * 60 * 24 * 30))
 
-document.body.onload = () => {
-    scrollThumb.style.width = `${(scrollBar.scrollWidth - 4) / (workList.scrollWidth / workList.offsetWidth)}px`;
-    scrollThumbLeftMax = scrollBar.scrollWidth - 4 - scrollThumb.offsetWidth;
-    workListScrollMax = workList.scrollWidth - workList.offsetWidth;
-
-    scrollThumb.onmousedown = () => {
-        mouseDownOnScrollThumb = true;
-        workList.style.scrollBehavior = 'unset';
-    }
-    document.onmouseup = () => {
-        mouseDownOnScrollThumb = false;
-        workList.style.scrollBehavior = 'smooth';
-    }
-
-    document.onmousemove = e => {
-        if(mouseDownOnScrollThumb) {
-            var leftValue = Number(getComputedStyle(scrollThumb).left.slice(0, -2)) + e.movementX;
-            if(leftValue > 0 && leftValue < scrollThumbLeftMax) {
-                scrollThumb.style.left = `${leftValue}px`;
-            } else if (leftValue < 0) { 
-                scrollThumb.style.left = 0;
-            } else if (leftValue > scrollThumbLeftMax) {
-                scrollThumb.style.left = `${scrollThumbLeftMax}px`;
-            }
-        }
-
-        workList.scroll((Number(getComputedStyle(scrollThumb).left.slice(0, -2)) * workListScrollMax) / scrollThumbLeftMax, 0)
-    }
-
-    workList.onscroll = () => {
-        scrollThumb.style.left = `${Math.ceil((workList.scrollLeft * scrollThumbLeftMax) / workListScrollMax)}px`;
-
-        if(workList.scrollLeft > 0){
-            shadowLeft.style.width = '13vw';
-        } else {
-            shadowLeft.style.width = '0';
-        }
-
-        if(workList.scrollLeft < workListScrollMax){
-            shadowRight.style.width = '13vw';
-        } else {
-            shadowRight.style.width = '0';
-        }
-    }
-};
 
 // events
 navigation.onclick = event => {
@@ -97,13 +52,14 @@ visualViewport.onresize = () => {
 
 socialInfo.onclick = event => {
     a = event.target;
+
     if((visualViewport.width < 768) && (event.target.tagName === "SPAN")) {
     
         if(event.target.nextElementSibling.className === "visible") {
             event.target.nextElementSibling.classList.remove("visible");
         } else {
-            for(var i = 0; i < event.path[2].children.length; i++){
-                event.path[2].children[i].children[1].classList.remove("visible");
+            for(var i = 0; i < event.target.closest('.social-info').children.length; i++){
+                event.target.closest('.social-info').children[i].children[1].classList.remove("visible");
             }
             
             document.documentElement.style.setProperty('--left', `-${event.target.nextElementSibling.offsetWidth + 1}px`);
@@ -194,10 +150,13 @@ function sendData() {
     }
     
 
-    ajax.open('POST', 'https://afternoon-sea-14560.herokuapp.com/', true);
+    ajax.open('POST', 'https://sk-api-64qq.onrender.com/api/add-data', true);
     ajax.setRequestHeader('Content-Type', 'application/json');
     
-    ajax.send(JSON.stringify(formData));
+    ajax.send(JSON.stringify({
+        key: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhU291cmNlIjoie1wic291cmNlXCI6XCJodHRwOi8vMTI3LjAuMC4xOjU1MDEvaW5kZXguaHRtbFwiLFwiaGVhZGluZ3NcIjpbXCJmdWxsX25hbWVcIixcImVtYWlsX2FkZHJlc3NcIixcIm1lc3NhZ2VcIl0sXCJfaWRcIjpcIjY0MGFjMDg0NTkyZWE4MGQ3MDhiNWQ0MVwiLFwidXNlcklkXCI6XCI2NDA1Y2MwYjliOWJjYWFmMTM0ZjcwYmNcIn0iLCJpYXQiOjE2Nzg0MjYyNDR9.sJKpgvCiSuzbGV7NcLY5XFmvrW0TKsBObVvgEpzr2Aw',
+        data: formData,
+    }));
 
     loader.style.display = 'block';
 
@@ -207,7 +166,12 @@ function sendData() {
         if(ajax.readyState == 4 && ajax.status == 200){
             result = JSON.parse(ajax.responseText);		
             
-            requestStatusBox.classList.add("response-came", result.message);
+            if(result.success){
+                requestStatusBox.classList.add("response-came", 'success');
+            } else {
+                requestStatusBox.classList.add("response-came", 'failure');
+            }
+            
         
             setTimeout(() => {
                 requestStatusBox.classList.remove("response-came");
