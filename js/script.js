@@ -154,7 +154,7 @@ function sendData() {
     ajax.setRequestHeader('Content-Type', 'application/json');
     
     ajax.send(JSON.stringify({
-        key: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhU291cmNlIjoie1wic291cmNlXCI6XCJodHRwOi8vMTI3LjAuMC4xOjU1MDEvaW5kZXguaHRtbFwiLFwiaGVhZGluZ3NcIjpbXCJmdWxsX25hbWVcIixcImVtYWlsX2FkZHJlc3NcIixcIm1lc3NhZ2VcIl0sXCJfaWRcIjpcIjY0MGFjMDg0NTkyZWE4MGQ3MDhiNWQ0MVwiLFwidXNlcklkXCI6XCI2NDA1Y2MwYjliOWJjYWFmMTM0ZjcwYmNcIn0iLCJpYXQiOjE2Nzg0MjYyNDR9.sJKpgvCiSuzbGV7NcLY5XFmvrW0TKsBObVvgEpzr2Aw',
+        key: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhU291cmNlIjoie1wic291cmNlXCI6XCJodHRwczovL3Nrc2luZ2hjb2Rlcy5naXRodWIuaW8vXCIsXCJoZWFkaW5nc1wiOltcImZ1bGxfbmFtZVwiLFwiZW1haWxfYWRkcmVzc1wiLFwibWVzc2FnZVwiXSxcIl9pZFwiOlwiNjQwYjlmNTc3NzgzNDMzODQ1OTkyMmVmXCIsXCJ1c2VySWRcIjpcIjY0MDVjYzBiOWI5YmNhYWYxMzRmNzBiY1wifSIsImlhdCI6MTY3ODQ4MzI4N30.ZtDpun_4NHybK-4KgF-4o1jr8hsgPVf1NjaTxZpdUZg',
         data: formData,
     }));
 
